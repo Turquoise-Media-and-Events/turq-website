@@ -20,7 +20,7 @@
   <header class="navbar" role="banner">
     <div class="navbar-inner">
       <a href="homepage.html" class="logo-link" aria-label="Turquoise Creations Home">
-        <img src="Logo.png" alt="Turquoise Creations logo" class="site-logo" />
+        <img src="./Pictures/Logo.png" alt="Turquoise Creations logo" class="site-logo" />
         <div class="logo-text">
           <span class="site-title">Turquoise Creations</span>
           <span class="site-subtitle">Media &amp; Events Olympus</span>
@@ -92,7 +92,7 @@
       </div>
       <div class="about-grid reveal-group">
         <div class="about-image-wrapper">
-          <img src="About .jpeg" alt="Turquoise Creations studio and events" class="about-img" loading="lazy" />
+          <img src="./Pictures/About .jpeg" alt="Turquoise Creations studio and events" class="about-img" loading="lazy" />
           <div class="about-image-accent"></div>
         </div>
         <div class="about-card">
@@ -196,42 +196,42 @@
       </div>
       <div class="gallery-grid">
         <div class="gallery-item reveal-item">
-          <img src="Photos section/Bussines sumitt at the roman Catholic Cathedral hall .jpg" alt="Business Summit at Roman Catholic Cathedral Hall" class="gallery-img" loading="lazy" />
+          <img src="./Pictures/Photos section/Bussines sumitt at the roman Catholic Cathedral hall .jpg" alt="Business Summit at Roman Catholic Cathedral Hall" class="gallery-img" loading="lazy" />
           <div class="gallery-overlay">
             <h3>Business Summit</h3>
             <p>Comprehensive event production at the Roman Catholic Cathedral Hall &mdash; stage setup, lighting, and AV coordination.</p>
           </div>
         </div>
         <div class="gallery-item reveal-item">
-          <img src="Photos section/events .jpg" alt="Event Production at Avani Hotel" class="gallery-img" loading="lazy" />
+          <img src="./Pictures/Photos section/events .jpg" alt="Event Production at Avani Hotel" class="gallery-img" loading="lazy" />
           <div class="gallery-overlay">
             <h3>Event Production</h3>
             <p>Dynamic production at Avani Hotel with expert coordination of lighting, sound, and stage design.</p>
           </div>
         </div>
         <div class="gallery-item reveal-item">
-          <img src="Photos section/journalism .jpg" alt="Journalism and Media Coverage" class="gallery-img" loading="lazy" />
+          <img src="./Pictures/Photos section/journalism .jpg" alt="Journalism and Media Coverage" class="gallery-img" loading="lazy" />
           <div class="gallery-overlay">
             <h3>Journalism &amp; Media</h3>
             <p>Professional media coverage with high-quality filming and photography.</p>
           </div>
         </div>
         <div class="gallery-item reveal-item">
-          <img src="Photos section/Leadership .jpg" alt="Leadership Conference" class="gallery-img" loading="lazy" />
+          <img src="./Pictures/Photos section/Leadership .jpg" alt="Leadership Conference" class="gallery-img" loading="lazy" />
           <div class="gallery-overlay">
             <h3>Leadership Events</h3>
             <p>Expertly managed leadership conference with professional staging and impactful presentations.</p>
           </div>
         </div>
         <div class="gallery-item reveal-item">
-          <img src="Photos section/more stuff.jpg" alt="World Health Organisation Event" class="gallery-img" loading="lazy" />
+          <img src="./Pictures/Photos section/more stuff.jpg" alt="World Health Organisation Event" class="gallery-img" loading="lazy" />
           <div class="gallery-overlay">
             <h3>World Health Organisation</h3>
             <p>Creative productions at Safari / Mercure Hotel showcasing versatility across event types.</p>
           </div>
         </div>
         <div class="gallery-item reveal-item">
-          <img src="event at country club .jpg" alt="Graduation Edition at Country Club" class="gallery-img" loading="lazy" />
+          <img src="./Pictures/event at country club .jpg" alt="Graduation Edition at Country Club" class="gallery-img" loading="lazy" />
           <div class="gallery-overlay">
             <h3>Graduation Edition</h3>
             <p>Immortalizing the River Higher Institute of Technology graduation at the Country Club.</p>
@@ -351,7 +351,7 @@
       <div class="offers-grid">
         <div class="offer-card reveal-item">
           <div class="offer-img-wrap">
-            <img src="media training .jpg" alt="Media Training" class="offer-img" loading="lazy" />
+            <img src="./Pictures/media training .jpg" alt="Media Training" class="offer-img" loading="lazy" />
           </div>
           <div class="offer-body">
             <h3>Media Training</h3>
@@ -360,7 +360,7 @@
         </div>
         <div class="offer-card reveal-item">
           <div class="offer-img-wrap">
-            <img src="Equiment hiring .jpg" alt="Equipment Rental" class="offer-img" loading="lazy" />
+            <img src="./Pictures/Equiment hiring .jpg" alt="Equipment Rental" class="offer-img" loading="lazy" />
           </div>
           <div class="offer-body">
             <h3>Equipment Rental</h3>
@@ -369,7 +369,7 @@
         </div>
         <div class="offer-card reveal-item">
           <div class="offer-img-wrap">
-            <img src="venue partnership .jpg" alt="Strategic Partnership" class="offer-img" loading="lazy" />
+            <img src="./Pictures/venue partnership .jpg" alt="Strategic Partnership" class="offer-img" loading="lazy" />
           </div>
           <div class="offer-body">
             <h3>Strategic Partnership</h3>
@@ -378,7 +378,7 @@
         </div>
         <div class="offer-card reveal-item">
           <div class="offer-img-wrap">
-            <img src="studio picture 2 .jpg" alt="Creative Workshops" class="offer-img" loading="lazy" />
+            <img src="./Pictures/studio picture 2 .jpg" alt="Creative Workshops" class="offer-img" loading="lazy" />
           </div>
           <div class="offer-body">
             <h3>Workshops</h3>
@@ -404,21 +404,33 @@
       <div id="blogspot-feed" class="blog-feed-grid reveal-group" aria-label="Latest blog posts"></div>
 
       <script>
+        /* Posts are kept here so the reader can show them without leaving the site */
+        window.blogPosts = [];
+
         function renderBlogger(data) {
           var entries = (data.feed && data.feed.entry) || [];
-          var items = entries.slice(0, 4).map(function(e) {
+          window.blogPosts = entries.slice(0, 4).map(function(e) {
             var title = (e.title && e.title.$t) || "Untitled";
-            var link = "#";
+            var link = "";
             if (e.link) { for (var i = 0; i < e.link.length; i++) { if (e.link[i].rel === "alternate") { link = e.link[i].href; break; } } }
-            var content = (e.summary && e.summary.$t) || (e.content && e.content.$t) || "";
-            var snippet = content.replace(/<[^>]+>/g, "").slice(0, 120) + "...";
+            var id = ((e.id && e.id.$t) || "").split("post-").pop() || String(Math.random()).slice(2);
+            var full = (e.content && e.content.$t) || (e.summary && e.summary.$t) || "";
+            var snippet = full.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 120) + "...";
             var thumb = (e.media$thumbnail && e.media$thumbnail.url) || "";
             if (thumb.indexOf("s72-c") > -1) thumb = thumb.replace("s72-c", "s640");
-            if (!thumb) { var m = content.match(/<img[^>]+src="([^">]+)"/); if (m && m[1]) thumb = m[1].replace(/s72-c/, "s640"); }
+            if (!thumb) { var m = full.match(/<img[^>]+src="([^">]+)"/); if (m && m[1]) thumb = m[1].replace(/s72-c/, "s640"); }
             if (!thumb) thumb = "https://via.placeholder.com/640x400?text=No+Image";
-            return '<a href="' + link + '" target="_blank" rel="noopener" class="blog-card"><div class="blog-card-thumb" style="background-image:url(\'' + thumb + '\')"></div><div class="blog-card-body"><h3>' + title + '</h3><p>' + snippet + '</p></div></a>';
+            var published = (e.published && e.published.$t) || "";
+            var author = (e.author && e.author[0] && e.author[0].name && e.author[0].name.$t) || "";
+            return { id: id, title: title, link: link, content: full, snippet: snippet, thumb: thumb, published: published, author: author };
+          });
+
+          document.getElementById("blogspot-feed").innerHTML = window.blogPosts.map(function(p) {
+            return '<a href="#post-' + p.id + '" class="blog-card" data-post-id="' + p.id + '"><div class="blog-card-thumb" style="background-image:url(\'' + p.thumb + '\')"></div><div class="blog-card-body"><h3>' + p.title + '</h3><p>' + p.snippet + '</p><span class="article-link">Read article &rarr;</span></div></a>';
           }).join("");
-          document.getElementById("blogspot-feed").innerHTML = items;
+
+          /* If someone arrived via a shared #post-… link, open it now */
+          if (window.openPostFromHash) window.openPostFromHash();
         }
       </script>
       <script src="https://turqcreationsolympus.blogspot.com/feeds/posts/default?alt=json-in-script&max-results=4&callback=renderBlogger"></script>
@@ -426,7 +438,7 @@
       <div class="articles-grid">
         <article class="article-card reveal-item">
           <div class="article-img-wrap">
-            <img src="Photos section/events .jpg" alt="Seamless Events" class="article-img" loading="lazy" />
+            <img src="./Pictures/Photos section/events .jpg" alt="Seamless Events" class="article-img" loading="lazy" />
           </div>
           <div class="article-body">
             <h3>Seamless Events</h3>
@@ -436,7 +448,7 @@
         </article>
         <article class="article-card reveal-item">
           <div class="article-img-wrap">
-            <img src="Photos section/camera.jpg" alt="Filming and Streaming" class="article-img" loading="lazy" />
+            <img src="./Pictures/Photos section/camera.jpg" alt="Filming and Streaming" class="article-img" loading="lazy" />
           </div>
           <div class="article-body">
             <h3>Filming &amp; Streaming</h3>
@@ -446,7 +458,7 @@
         </article>
         <article class="article-card reveal-item">
           <div class="article-img-wrap">
-            <img src="Photos section/Studio picture.webp" alt="Post Production" class="article-img" loading="lazy" />
+            <img src="./Pictures/Photos section/Studio picture.webp" alt="Post Production" class="article-img" loading="lazy" />
           </div>
           <div class="article-body">
             <h3>Post Production</h3>
@@ -488,7 +500,7 @@
           </div>
         </div>
         <div class="contact-img-wrap">
-          <img src="Photos section/Studio picture.webp" alt="Turquoise Creations Studio" class="contact-img" loading="lazy" />
+          <img src="./Pictures/Photos section/Studio picture.webp" alt="Turquoise Creations Studio" class="contact-img" loading="lazy" />
         </div>
       </div>
     </div>
@@ -499,16 +511,16 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <img src="Logo.png" alt="Turquoise Creations" class="footer-logo" />
+          <img src="./Pictures/Logo.png" alt="Turquoise Creations" class="footer-logo" />
           <span class="footer-brand-name">Turquoise Creations Productions</span>
           <p class="footer-tagline">The Media and Events Olympus</p>
         </div>
         <div class="footer-social">
-          <a href="https://www.facebook.com/profile.php?id=61565213855131" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-btn facebook"><img src="facebook.png" alt="" class="social-icon" /></a>
-          <a href="https://www.instagram.com/turqmediaevents/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-btn instagram"><img src="instagram.png" alt="" class="social-icon" /></a>
-          <a href="https://x.com/TurqMediaEvents" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="social-btn twitter"><img src="twitter.png" alt="" class="social-icon" /></a>
-          <a href="mailto:turqmediaandevents@gmail.com" aria-label="Email" class="social-btn email"><img src="email.png" alt="" class="social-icon" /></a>
-          <a href="https://wa.me/264813135754" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-btn whatsapp"><img src="whatsapp.png" alt="" class="social-icon" /></a>
+          <a href="https://www.facebook.com/profile.php?id=61565213855131" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-btn facebook"><img src="./Pictures/facebook.png" alt="" class="social-icon" /></a>
+          <a href="https://www.instagram.com/turqmediaevents/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-btn instagram"><img src="./Pictures/instagram.png" alt="" class="social-icon" /></a>
+          <a href="https://x.com/TurqMediaEvents" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="social-btn twitter"><img src="./Pictures/twitter.png" alt="" class="social-icon" /></a>
+          <a href="mailto:turqmediaandevents@gmail.com" aria-label="Email" class="social-btn email"><img src="./Pictures/email.png" alt="" class="social-icon" /></a>
+          <a href="https://wa.me/264813135754" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-btn whatsapp"><img src="./Pictures/whatsapp.png" alt="" class="social-icon" /></a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -521,6 +533,28 @@
   <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-label="Image preview">
     <button class="modal-close" aria-label="Close">&times;</button>
     <img class="modal-content" id="modalImage" alt="Enlarged preview" />
+  </div>
+
+  <!-- BLOG READER -->
+  <div id="blogReader" class="blog-reader" role="dialog" aria-modal="true" aria-labelledby="blogReaderTitle" hidden>
+    <div class="blog-reader-backdrop" data-close-reader></div>
+    <article class="blog-reader-panel" tabindex="-1">
+      <div class="blog-reader-bar">
+        <button type="button" class="blog-reader-back" data-close-reader>&larr; Back to site</button>
+        <button type="button" class="blog-reader-close" data-close-reader aria-label="Close article">&times;</button>
+      </div>
+      <div class="blog-reader-scroll">
+        <header class="blog-reader-header">
+          <span class="section-tag">The Blog</span>
+          <h1 id="blogReaderTitle" class="blog-reader-title"></h1>
+          <p class="blog-reader-meta"></p>
+        </header>
+        <div class="blog-reader-content"></div>
+        <footer class="blog-reader-footer">
+          <a class="blog-reader-source" href="#" target="_blank" rel="noopener">View original post &#8599;</a>
+        </footer>
+      </div>
+    </article>
   </div>
 
   <script>
@@ -659,6 +693,111 @@
     document.querySelector('.modal-close').addEventListener('click', function() { modal.classList.remove('show'); });
     modal.addEventListener('click', function(e) { if (e.target === modal) modal.classList.remove('show'); });
     document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && modal.classList.contains('show')) modal.classList.remove('show'); });
+
+    /* ===== BLOG READER (opens posts on-site) ===== */
+    (function() {
+      var reader = document.getElementById('blogReader');
+      var panel = reader.querySelector('.blog-reader-panel');
+      var scrollBox = reader.querySelector('.blog-reader-scroll');
+      var titleEl = reader.querySelector('.blog-reader-title');
+      var metaEl = reader.querySelector('.blog-reader-meta');
+      var contentEl = reader.querySelector('.blog-reader-content');
+      var sourceEl = reader.querySelector('.blog-reader-source');
+      var lastFocus = null;
+      var openedByClick = false;
+
+      /* Strip anything executable from the post HTML before showing it */
+      function cleanHTML(html) {
+        var tpl = document.createElement('template');
+        tpl.innerHTML = html;
+        tpl.content.querySelectorAll('script, style, link, meta, object, embed, form').forEach(function(n) { n.remove(); });
+        tpl.content.querySelectorAll('*').forEach(function(el) {
+          Array.prototype.slice.call(el.attributes).forEach(function(a) {
+            var name = a.name.toLowerCase();
+            if (name.indexOf('on') === 0) el.removeAttribute(a.name);
+            if ((name === 'href' || name === 'src') && /^\s*javascript:/i.test(a.value)) el.removeAttribute(a.name);
+          });
+          if (el.tagName === 'A' && el.getAttribute('href') && el.getAttribute('href').charAt(0) !== '#') {
+            el.setAttribute('target', '_blank');
+            el.setAttribute('rel', 'noopener');
+          }
+          if (el.tagName === 'IMG') {
+            el.setAttribute('loading', 'lazy');
+            var src = el.getAttribute('src') || '';
+            if (/s72-c|s320|s400/.test(src)) el.setAttribute('src', src.replace(/s72-c|s320|s400/, 's1200'));
+          }
+        });
+        return tpl.innerHTML;
+      }
+
+      function formatDate(iso) {
+        if (!iso) return '';
+        var d = new Date(iso);
+        return isNaN(d) ? '' : d.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+      }
+
+      function findPost(id) {
+        var posts = window.blogPosts || [];
+        for (var i = 0; i < posts.length; i++) if (posts[i].id === id) return posts[i];
+        return null;
+      }
+
+      function show(post) {
+        titleEl.textContent = post.title;
+        metaEl.textContent = [formatDate(post.published), post.author].filter(Boolean).join(' · ');
+        contentEl.innerHTML = cleanHTML(post.content) || '<p>' + post.snippet + '</p>';
+        if (post.link) { sourceEl.href = post.link; sourceEl.hidden = false; } else { sourceEl.hidden = true; }
+        lastFocus = document.activeElement;
+        reader.hidden = false;
+        document.body.classList.add('reader-open');
+        scrollBox.scrollTop = 0;
+        requestAnimationFrame(function() { reader.classList.add('open'); panel.focus(); });
+        document.title = post.title + ' | Turquoise Creations';
+      }
+
+      function hide() {
+        reader.classList.remove('open');
+        document.body.classList.remove('reader-open');
+        document.title = 'Turquoise Creations Productions | Media & Events Olympus';
+        setTimeout(function() { reader.hidden = true; contentEl.innerHTML = ''; }, 300);
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      /* The URL hash (#post-ID) drives the reader, so Back closes it and links are shareable */
+      window.openPostFromHash = function() {
+        var m = location.hash.match(/^#post-(.+)$/);
+        if (m) {
+          var post = findPost(m[1]);
+          if (post) show(post);
+        } else if (!reader.hidden) {
+          hide();
+        }
+      };
+      window.addEventListener('hashchange', window.openPostFromHash);
+
+      document.getElementById('blogspot-feed').addEventListener('click', function(e) {
+        var card = e.target.closest('.blog-card[data-post-id]');
+        if (!card) return;
+        e.preventDefault();
+        e.stopPropagation();
+        openedByClick = true;
+        location.hash = 'post-' + card.getAttribute('data-post-id');
+      });
+
+      function close() {
+        if (openedByClick) { openedByClick = false; history.back(); }
+        else { history.replaceState(null, '', location.pathname + location.search + '#blog'); hide(); }
+      }
+
+      reader.addEventListener('click', function(e) {
+        if (e.target.closest('[data-close-reader]')) close();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !reader.hidden) close();
+      });
+
+      openPostFromHash();
+    })();
   </script>
   <script src="script.js" defer></script>
 </body>
